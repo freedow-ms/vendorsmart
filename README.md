@@ -97,3 +97,5 @@ Both modules contains all the domain entities and business rules for each bounde
 # Run
 
 To run the API, use `docker compose up --build` and open `http://localhost:5100/swagger/index.html` to run Swagger.
+
+Some Vendors and Jobs are already seeded, to test the output just create a new Job and search for the potential vendor with the new Job Id.
