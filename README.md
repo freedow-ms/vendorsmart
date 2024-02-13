@@ -18,10 +18,10 @@ The API offers the following endpoints:
 
 ## Software Engineering
 
-The API was created using a **Modular Monolith** approach, where each module has its own data (stored in memory), responsabilities and Boundary Apis for business related communication between modules. Every layer and module of the solution is oriented in a **DDD** and **Clean Architecture** approach (the definifitions will not go beyond the scope of this assessment):
+The API was created using a **Modular Monolith** approach, where each module has its own data (stored in memory), responsibilities and Boundary Apis for business related communication between modules. Every layer and module of the solution is oriented in a **DDD** and **Clean Architecture** approach (the definitions will not go beyond the scope of this assessment):
 
 - **Domain Layer**: which contains domain entities and all that is bounded to domain business rules
-- **Application Layer**: which contains use cases (requests) and all that is is bounded to application rules. Also where Boundary APIs contracts are implemented.
+- **Application Layer**: which contains use cases (requests) and all that is bounded to application rules. Also where Boundary APIs contracts are implemented.
 - **Infrastructure Layer**: which contains all the logic in a IOC style (respecting domain contracts) and information where and how data is stored.
 - **Crosscutting**: dependency injection for modules usage (both application and infrastructure services).
 
@@ -33,27 +33,27 @@ The API was created using a **Modular Monolith** approach, where each module has
   - **Shared** - Contains all the code for shared data.
   - **Presentation** - Contains the API.
 
-Both the the Job and Vendor folder have the same structure that follows the example above. The shared folder also respects the layers explained but instead of a single library is contains a **Core** and **SharedKernel** libraries.
+Both Job and Vendor folder have the same structure that follows the example above. The shared folder also respects the layers explained but instead of a single library it contains a **Core** and **SharedKernel** library.
 
-The Core library contains middlewares, helpers, patterns that are used by every module at each layer. I will enumerate them just for the sake of understanding the Core of the solution:
+The Core library contains middlewares, helpers, patterns and other pieces of code that are used by every module at each layer. I will enumerate them just for the sake of understanding the Core of the solution:
 
 - **Application**
-  - **Exceptions**: Application Exceptions
+  - **Exceptions**: Application Exceptions such as EntityNotFoundException.
   - **Extensions**:
-    - MediatR extensions to use requests as CQRS and translate Results to [Http Problem Detail](https://www.rfc-editor.org/rfc/rfc7807)
+    - MediatR extensions to use requests as CQRS and translate [Results](https://github.com/victorDivino/operationResult) to [Http Problem Detail](https://www.rfc-editor.org/rfc/rfc7807)
   - **Middlewares**:
-    - MediatR middlewares for handling Requests validations and translatin to Result
-    - A simple exception middleware to log and generically recover unhandled exceptions
-  - **Problem Details**: A simple wrapper for Problem Details
+    - MediatR middlewares for handling Requests validations and translating to Result.
+    - A simple exception middleware to log and generically recover unhandled exceptions.
+  - **Problem Details**: A simple wrapper for [Problem Detail](https://www.rfc-editor.org/rfc/rfc7807).
 - **Domain**
-  - **Exceptions**: Common domain exceptions such as BusinessException
-  - **Entities**: Common entities implementations
-  - **Contracts**: Common domain contracts
+  - **Exceptions**: Common domain exceptions such as BusinessException.
+  - **Entities**: Common entities implementations.
+  - **Contracts**: Common domain contracts.
 - **Util**
-  - **Exceptions**: Global exception for erros on the Application as a whole
-  - **OperationResult**: A pattern to avoid throwing exceptions and allow propagating them via call stacks wrapped with success and result states. An almost identical version of [OperationResult](https://github.com/victorDivino/operationResult) but with support for errors to integrate with FluentValidation and OperationResult
-  - **Specification**: Specification pattern with evaluator to allow tracking specifications used
-- **DI**: Aggregate of configurations for the API (basic auth, swagger, services injection, mediatr and flutentvalidation configs, etc)
+  - **Exceptions**: Global exception for errors on the Application as a whole.
+  - **OperationResult**: A pattern to avoid throwing exceptions and allow propagating them via call stacks wrapped with success and result states. An almost identical version of [OperationResult](https://github.com/victorDivino/operationResult) but with support for errors to integrate with FluentValidation and OperationResult.
+  - **Specification**: Specification pattern with evaluator to allow validating specifications used.
+- **DI**: Aggregate of configurations for the API (basic auth, swagger, services injection, mediatr and flutentvalidation configs, etc).
 
 Besides the Core, all the other libraries are related to Bounded Contexts:
 
@@ -77,7 +77,7 @@ Both modules contains all the domain entities and business rules for each bounde
 
 - **Domain**
   - Domain entity
-  - Specification for qiuerying potential vendors
+  - Specification for querying potential vendors
   - Repository contract
   - UnitTests for entities
 - **Application**
@@ -93,3 +93,7 @@ Both modules contains all the domain entities and business rules for each bounde
 - **DI**
   - Module injection
   - Boundary Apis
+
+# Run
+
+To run the API, use `docker compose up --build` and open `http://localhost:5100/swagger/index.html` to run Swagger.
