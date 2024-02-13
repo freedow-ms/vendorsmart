@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Core\VendorSmart.Shared.Core.DI\VendorSmart.Shared.Core.DI.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Kernel\src\VendorSmart.SharedKernel.Boundaries\VendorSmart.SharedKernel.Boundaries.csproj" />
+    <ProjectReference Include="..\VendorSmart.Job.Application.BoundaryApi\VendorSmart.Job.Application.BoundaryApi.csproj" />
+    <ProjectReference Include="..\VendorSmart.Job.Application\VendorSmart.Job.Application.csproj" />
+    <ProjectReference Include="..\VendorSmart.Job.Infrastructure\VendorSmart.Job.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

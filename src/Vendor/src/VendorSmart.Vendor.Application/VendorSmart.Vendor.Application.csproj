@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="12.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Core\VendorSmart.Shared.Core.Application\VendorSmart.Shared.Core.Application.csproj" />
+		<ProjectReference Include="..\..\..\Shared\Core\VendorSmart.Shared.Core.DI\VendorSmart.Shared.Core.DI.csproj" />
+		<ProjectReference Include="..\..\..\Shared\Kernel\src\VendorSmart.SharedKernel.Boundaries\VendorSmart.SharedKernel.Boundaries.csproj" />
+		<ProjectReference Include="..\VendorSmart.Vendor.Domain\VendorSmart.Vendor.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
